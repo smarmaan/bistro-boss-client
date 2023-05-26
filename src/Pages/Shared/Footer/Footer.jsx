@@ -1,3 +1,5 @@
+import moment from "moment/moment";
+
 const Footer = () => {
   return (
     <div>
@@ -16,12 +18,15 @@ const Footer = () => {
               Sat - Sun: 10:00 - 23:00{" "}
             </p>
           </div>
-          <div className="bg-[#111827] w-full h-full p-10">
-            <span className="footer-title mx-auto">Follow US</span>
-            <span className="footer-title  mx-auto">
-              Join us on social media
+          <div className="bg-[#111827]  w-full h-full p-10">
+            <span className="footer-title  mx-auto font-medium text-3xl text-center">
+              Follow US <br />{" "}
+              <span className="footer-title font-medium text-xl mx-auto ">
+                Join us on social media
+              </span>
             </span>
-            <div className="grid grid-flow-col gap-4  mx-auto">
+
+            <div className="grid grid-flow-col gap-4  mx-auto md:-my-12">
               <a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +66,10 @@ const Footer = () => {
 
         <footer className="footer footer-center text-white p-4 bg-[#151515] ">
           <div>
-            <p className=" mx-auto font-medium text-xl">Copyright © CulinaryCloud. All rights reserved.</p>
+            <p className=" mx-auto font-medium text-xl">
+              Copyright © <span>{moment().format("YYYY")}</span> CulinaryCloud.
+              All rights reserved.
+            </p>
           </div>
         </footer>
       </div>
