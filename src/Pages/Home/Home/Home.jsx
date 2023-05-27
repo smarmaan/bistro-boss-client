@@ -1,3 +1,4 @@
+import PhoneNumber from "../../../Components/PhoneNumber/PhoneNumber";
 import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
 import PopularMenu from "../PopularMenu/PopularMenu";
@@ -8,6 +9,7 @@ const Home = () => {
       <Banner></Banner>
       <Category></Category>
       <PopularMenu></PopularMenu>
+      <PhoneNumber></PhoneNumber>
     </div>
   );
 };
