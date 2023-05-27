@@ -30,42 +30,42 @@ const Category = () => {
       >
         <SwiperSlide>
           <img className="rounded-xl" src={img1} alt="" />
-          <h1 className="text-4xl uppercase  text-[#ffffffbd] -mt-16 my-20 mx-20 shadow-2xl drop-shadow-xl">
+          <h1 className=" md:text-4xl uppercase  text-[#ffffffbd] -mt-7 md:-mt-14 my-20 mx-4 md:mx-20 shadow-2xl drop-shadow-xl">
             Salads
           </h1>
         </SwiperSlide>
 
         <SwiperSlide>
           <img className="rounded-xl" src={img1} alt="" />
-          <h1 className="text-4xl uppercase  text-[#ffffffbd] -mt-16  mx-20 shadow-2xl drop-shadow-xl">
+          <h1 className=" md:text-4xl uppercase  text-[#ffffffbd] -mt-7 md:-mt-14 mx-4 md:mx-20 shadow-2xl drop-shadow-xl">
             Pizzas
           </h1>
         </SwiperSlide>
 
         <SwiperSlide>
           <img className="rounded-xl" src={img2} alt="" />{" "}
-          <h1 className="text-4xl uppercase  text-[#ffffffbd] -mt-14 mx-20 shadow-2xl drop-shadow-xl">
+          <h1 className=" md:text-4xl uppercase  text-[#ffffffbd] -mt-7 md:-mt-14 mx-4 md:mx-20 shadow-2xl drop-shadow-xl">
             Soups
           </h1>
         </SwiperSlide>
 
         <SwiperSlide>
           <img className="rounded-xl" src={img3} alt="" />{" "}
-          <h1 className="text-4xl uppercase  text-[#ffffffbd] -mt-14 mx-20 shadow-2xl drop-shadow-xl">
+          <h1 className=" md:text-4xl uppercase  text-[#ffffffbd] -mt-7 md:-mt-14 mx-4 md:mx-20 shadow-2xl drop-shadow-xl">
             Desserts
           </h1>
         </SwiperSlide>
 
         <SwiperSlide>
           <img className="rounded-xl" src={img4} alt="" />
-          <h1 className="text-4xl uppercase  text-[#ffffffbd] -mt-14 mx-20 shadow-2xl drop-shadow-xl">
+          <h1 className=" md:text-4xl uppercase  text-[#ffffffbd] -mt-7 md:-mt-14 mx-4 md:mx-20 shadow-2xl drop-shadow-xl">
             Salads
           </h1>
         </SwiperSlide>
 
         <SwiperSlide>
           <img className="rounded-xl" src={img5} alt="" />{" "}
-          <h1 className="text-4xl uppercase  text-[#ffffffbd] -mt-14 mx-20 shadow-2xl drop-shadow-xl">
+          <h1 className=" md:text-4xl uppercase  text-[#ffffffbd] -mt-7 md:-mt-14 mx-4 md:mx-20 shadow-2xl drop-shadow-xl">
             Salads
           </h1>
         </SwiperSlide>
