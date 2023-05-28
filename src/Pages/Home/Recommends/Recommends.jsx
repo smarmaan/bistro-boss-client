@@ -11,7 +11,7 @@ const Recommends = () => {
       />
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ">
-        <div className="card mx-auto card-compact w-[424px] text-center bg-base-100 shadow-xl">
+        <div className="card mx-auto card-compact w-[424px] text-center bg-[#F3F3F3] drop-shadow-xl shadow-xl">
           <figure>
             <img src={img1} alt="Salad" />
           </figure>
@@ -26,7 +26,7 @@ const Recommends = () => {
           </div>
         </div>
 
-        <div className="card mx-auto  card-compact w-[424px] text-center bg-base-100 shadow-xl">
+        <div className="card mx-auto  card-compact w-[424px] text-center bg-[#F3F3F3] drop-shadow-xl  shadow-xl">
           <figure>
             <img src={img1} alt="Salad" />
           </figure>
@@ -41,7 +41,7 @@ const Recommends = () => {
           </div>
         </div>
 
-        <div className="card mx-auto  card-compact w-[424px] text-center bg-base-100 shadow-xl">
+        <div className="card mx-auto  card-compact w-[424px] text-center bg-[#F3F3F3] drop-shadow-xl shadow-xl">
           <figure>
             <img src={img1} alt="Salad" />
           </figure>
