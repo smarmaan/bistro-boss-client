@@ -2,7 +2,7 @@ import moment from "moment/moment";
 
 const Footer = () => {
   return (
-    <section className="my-64">
+    <section className="">
       <footer className="footer gap-0 pt-10 text-white">
         <div className="bg-[#1F2937] w-full h-full p-10">
           <h1 className=" mx-auto font-medium text-3xl">CONTACT US</h1>

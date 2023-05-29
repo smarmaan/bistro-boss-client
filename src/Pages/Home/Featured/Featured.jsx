@@ -7,7 +7,7 @@ const Featured = () => {
     <section className="featured-Item bg-fixed p-10  ">
       <SectionTitle heading="FROM OUR MENU" subheading="---Check it out---" />
 
-      <div className="md:flex justify-center items-center p-24">
+      <div className="img-back mt-10 md:flex justify-center items-center p-24">
         <figure className="featured-img">
           <img src={featuredImg} alt="" />
         </figure>
