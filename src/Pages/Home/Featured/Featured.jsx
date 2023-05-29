@@ -4,11 +4,11 @@ import "./Featured.css";
 
 const Featured = () => {
   return (
-    <section className="featured-Item p-10">
+    <section className="featured-Item bg-fixed p-10  ">
       <SectionTitle heading="FROM OUR MENU" subheading="---Check it out---" />
 
       <div className="md:flex justify-center items-center p-24">
-        <figure>
+        <figure className="featured-img">
           <img src={featuredImg} alt="" />
         </figure>
 
