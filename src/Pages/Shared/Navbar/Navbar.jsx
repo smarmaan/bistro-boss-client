@@ -1,15 +1,25 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const navOptions = (
     <>
-    <div className="md:flex gap-10">
+      <div className="md:flex gap-10"></div>
 
-
-    <li>HOME</li>
-      <li>CONTACT US</li>
-      <li>DASHBOARD</li>
-      <li>OUR MENU</li>
-      <li>OUR SHOP</li>
-    </div>
+      <li>
+        <Link to="/">HOME</Link>
+      </li>
+      <li>
+        <Link to="">CONTACT US </Link>
+      </li>
+      <li>
+        <Link to="">DASHBOARD </Link>
+      </li>
+      <li>
+        <Link to="/menu">OUR MENU</Link>
+      </li>
+      <li>
+        <Link to="">OUR SHOP</Link>
+      </li>
     </>
   );
 
