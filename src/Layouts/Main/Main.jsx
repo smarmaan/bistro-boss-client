@@ -6,13 +6,11 @@ const Main = () => {
   const location = useLocation();
 
   const noHeaderFooter = location.pathname.includes("login");
-  console.log(noHeaderFooter);
 
   return (
     <div>
       {noHeaderFooter || <Navbar></Navbar>}
       <Outlet></Outlet>
-
       {noHeaderFooter || <Footer></Footer>}
     </div>
   );
