@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -13,6 +17,10 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log(data);
     reset();
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    });
   };
 
   return (
@@ -21,7 +29,7 @@ const SignUp = () => {
         <title>Bistro Boss | Sign Up</title>
       </Helmet>
 
-      <div className="hero min-h-screen bg-red-200 gap-10">
+      <div className="hero min-h-screen bg-[url('https://i.pinimg.com/originals/e2/5b/2f/e25b2fa0d4c97f6e4ebf5dff3eb9a45d.jpg')] gap-10  bg-cover">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2  lg:text-left shadow-xl drop-shadow-xl p-10 rounded-2xl bg-green-100">
             <h1 className="text-5xl font-bold">Sign Up</h1>
@@ -41,7 +49,7 @@ const SignUp = () => {
 
  */}
 
-          <div className="card md:w-1/2 max-w-sm shadow-2xl bg-green-100">
+          <div className="card text-white md:w-1/2 max-w-sm shadow-2xl  bg-[url('https://t4.ftcdn.net/jpg/05/51/93/35/360_F_551933523_nBWNQeC6vA8sDE6DDDQeo3YmSRQnlOjN.jpg')]   bg-cover drop-shadow-2xl ">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -144,7 +152,7 @@ const SignUp = () => {
 
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-primary  hover:bg-[#1c201e] hover:text-white "
                   type="submit"
                   value="Sign Up"
                 />
