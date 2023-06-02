@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, LogOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    LogOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   const navOptions = (
     <>
       <div className="md:flex gap-10"></div>
@@ -14,9 +24,20 @@ const Navbar = () => {
       <li>
         <Link to="/order/Salad">ORDER FOOD</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+
+      {user ? (
+        <>
+          <button onClick={handleLogout} className="btn btn-ghost ">
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -49,12 +70,12 @@ const Navbar = () => {
         </div>
         <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
-      <div className="navbar-end">
+      {/* <div className="navbar-end">
         <a className="btn">SIGN OUT</a>
-      </div>
+      </div> */}
     </div>
   );
 };

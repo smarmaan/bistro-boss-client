@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -7,11 +7,10 @@ import {
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const captchaRef = useRef(null);
-
-  const [disabled, setdisabled] = useState(true);
+  const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
 
@@ -27,26 +26,34 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+
+        Swal.fire({
+          title: "User Login Successful",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
       })
       .catch((error) => console.error(error));
   };
 
-  const handleValidateCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
 
     if (validateCaptcha(user_captcha_value)) {
-      console.log("okay");
-      setdisabled(false);
+      // console.log("okay");
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+      alert("incorrect captcha value");
     }
-
-    // else {
-    //   console.log("Not okay");
-    //   setdisabled(true);
-    // }
   };
 
   useEffect(() => {
-    loadCaptchaEnginge(2);
+    loadCaptchaEnginge(3);
   }, []);
 
   return (
@@ -66,7 +73,7 @@ const Login = () => {
             </p>
           </div>
 
-          <div className="card md:w-1/2 max-w-sm shadow-2xl bg-green-100">
+          <div className="card   bg-[url('https://i.pinimg.com/originals/e2/5b/2f/e25b2fa0d4c97f6e4ebf5dff3eb9a45d.jpg')]    drop-shadow-2xl  md:w-1/2 max-w-sm shadow-2xl bg-green-100">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -105,18 +112,12 @@ const Login = () => {
                 </label>
                 <input
                   type="text"
-                  ref={captchaRef}
                   placeholder="Type the captcha above"
                   name="captcha"
                   className="input input-bordered"
+                  onBlur={handleValidateCaptcha}
                 />
-
-                <button
-                  onClick={handleValidateCaptcha}
-                  className="items-center btn w-24 btn-outline btn-xs mt-5 hover:bg-[#1c201e] hover:text-white mx-auto"
-                >
-                  Validate
-                </button>
+                {/* <li className="btn w-1/4 mx-auto">Validate</li> */}
               </div>
               {/* 
 
