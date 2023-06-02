@@ -5,7 +5,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
@@ -13,6 +13,12 @@ const Login = () => {
   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -36,6 +42,8 @@ const Login = () => {
             popup: "animate__animated animate__fadeOutUp",
           },
         });
+
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -73,7 +81,7 @@ const Login = () => {
             </p>
           </div>
 
-          <div className="card   bg-[url('https://i.pinimg.com/originals/e2/5b/2f/e25b2fa0d4c97f6e4ebf5dff3eb9a45d.jpg')]    drop-shadow-2xl  md:w-1/2 max-w-sm shadow-2xl bg-green-100">
+          <div className="card   bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg?w=996&t=st=1685731093~exp=1685731693~hmac=87761a276a35f19c8d1dcfea9259596a0a277667448e84f254f0b3ec24385288')]    drop-shadow-2xl  md:w-1/2 max-w-sm shadow-2xl bg-green-100">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
