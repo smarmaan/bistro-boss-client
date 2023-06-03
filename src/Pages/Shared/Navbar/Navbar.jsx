@@ -9,6 +9,7 @@ const Navbar = () => {
 
   const [cart] = UseCart();
 
+  console.log(cart);
   const handleLogout = () => {
     LogOut()
       .then(() => {})
@@ -36,7 +37,7 @@ const Navbar = () => {
         <Link to="">
           <button className="flex gap-2 ">
             <FaShoppingCart />{" "}
-            <div className="badge badge-error">{cart?.length}</div>
+            <div className="badge badge-error">+{cart?.length || 0}</div>
           </button>
         </Link>
       </li>
