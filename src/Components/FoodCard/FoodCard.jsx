@@ -1,5 +1,47 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 const FoodCard = ({ item }) => {
   const { image, name, recipe, price } = item;
+
+  const { user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = (itemData) => {
+    console.log(itemData);
+
+    if (user) {
+      fetch("http://localhost:5000/carts")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your product has been saved to cart",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Please Login to order your food",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login Now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
+  };
 
   return (
     <div className="card mx-auto card-compact w-[424px] text-center bg-[#F3F3F3] drop-shadow-xl shadow-xl">
@@ -15,7 +57,10 @@ const FoodCard = ({ item }) => {
         <p>{recipe}</p>
 
         <div className="card-actions justify-center my-6">
-          <button className="btn bg-[#E8E8E8] hover:bg-[#1F2937] border-[#BB8506] border-b-4 hover:border-b-0 border-0 text-[#BB8506] ">
+          <button
+            onClick={() => handleAddToCart(item)}
+            className="btn bg-[#E8E8E8] hover:bg-[#1F2937] border-[#BB8506] border-b-4 hover:border-b-0 border-0 text-[#BB8506] "
+          >
             add to cart
           </button>
         </div>

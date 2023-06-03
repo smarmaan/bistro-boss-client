@@ -17,7 +17,7 @@ const PopularMenu = () => {
       </div>
 
       <div className="flex justify-center">
-        <button className="btn border-[#1F2937] border-b-4 border-0 text-xl text-[#1F2937] font-medium text-center uppercase">
+        <button className="btn bg-[#E8E8E8] hover:bg-[#1F2937] border-[#BB8506] border-b-4 hover:border-b-0 border-0 text-[#BB8506] ">
           View Full Menu
         </button>
       </div>
