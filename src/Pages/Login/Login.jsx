@@ -140,7 +140,7 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p className="text-center  text-xl text-white ">
+            <p className="text-center  text-xl">
               <small>
                 New Here?{" "}
                 <Link

@@ -30,6 +30,14 @@ const Navbar = () => {
 
       {user ? (
         <>
+          <figure>
+            <img
+              className="avatar w-10 rounded-full"
+              src={user?.photoURL}
+              title={user?.displayName}
+              alt=""
+            />
+          </figure>
           <button onClick={handleLogout} className="btn btn-ghost ">
             Logout
           </button>

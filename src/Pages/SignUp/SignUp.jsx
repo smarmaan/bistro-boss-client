@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -16,10 +18,27 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    reset();
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("user profile info update");
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User created successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     });
   };
 
@@ -29,7 +48,7 @@ const SignUp = () => {
         <title>Bistro Boss | Sign Up</title>
       </Helmet>
 
-      <div className="hero min-h-screen bg-[url('https://i.pinimg.com/originals/e2/5b/2f/e25b2fa0d4c97f6e4ebf5dff3eb9a45d.jpg')] gap-10  bg-cover">
+      <div className="hero min-h-screen bg-[url('https://t4.ftcdn.net/jpg/05/51/93/35/360_F_551933523_nBWNQeC6vA8sDE6DDDQeo3YmSRQnlOjN.jpg')] gap-10  bg-cover">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2  lg:text-left shadow-xl drop-shadow-xl p-10 rounded-2xl bg-green-100">
             <h1 className="text-5xl font-bold">Sign Up</h1>
@@ -49,7 +68,7 @@ const SignUp = () => {
 
  */}
 
-          <div className="card text-white md:w-1/2 max-w-sm shadow-2xl  bg-[url('https://t4.ftcdn.net/jpg/05/51/93/35/360_F_551933523_nBWNQeC6vA8sDE6DDDQeo3YmSRQnlOjN.jpg')]   bg-cover drop-shadow-2xl ">
+          <div className="card  md:w-1/2 max-w-sm shadow-2xl  bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg?w=996&t=st=1685731093~exp=1685731693~hmac=87761a276a35f19c8d1dcfea9259596a0a277667448e84f254f0b3ec24385288')]   bg-cover drop-shadow-2xl ">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -64,6 +83,29 @@ const SignUp = () => {
                 />
                 {errors.name && (
                   <span className="text-red-600">Name is required</span>
+                )}
+              </div>
+
+              {/* 
+
+
+
+
+
+
+ */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Photo URL"
+                  {...register("photoURL", { required: true })}
+                  className="input input-bordered"
+                />
+                {errors.photoURL && (
+                  <span className="text-red-600">Photo URL is required</span>
                 )}
               </div>
 
