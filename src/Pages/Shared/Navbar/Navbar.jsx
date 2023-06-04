@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const [cart] = UseCart();
 
-  console.log(cart);
+  // console.log(cart);
   const handleLogout = () => {
     LogOut()
       .then(() => {})
