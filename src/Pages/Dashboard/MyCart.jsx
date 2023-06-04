@@ -25,7 +25,7 @@ const MyCart = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/carts/${item._id}`, {
-          method: "delete",
+          method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
