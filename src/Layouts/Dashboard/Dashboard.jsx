@@ -3,8 +3,11 @@ import { FaShoppingCart, FaCalendarAlt, FaHome } from "react-icons/fa";
 import { GiWallet } from "react-icons/gi";
 // import { BsFillChatTextFill, BsFillCalendarHeartFill } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
+import UseCart from "../../Hooks/UseCart";
 
 const Dashboard = () => {
+  const [cart] = UseCart();
+
   return (
     <div className="drawer  lg:drawer-open drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -32,17 +35,21 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink to="/dashboard/reservations">
-              <FaCalendarAlt /> reservations
+              <FaCalendarAlt /> Reservations
             </NavLink>
           </li>
           <li>
             <NavLink to="/dashboard/history">
-              <GiWallet /> payment history
+              <GiWallet /> Payment history
             </NavLink>
           </li>
+
           <li>
             <NavLink to="/dashboard/my-cart">
-              <FaShoppingCart /> My Cart
+              <button className="flex gap-2 items-center">
+                <FaShoppingCart />{" "}My Cart
+                <div className="badge badge-error">{cart?.length || 0}</div>
+              </button>
             </NavLink>
           </li>
           {/* <li>
@@ -60,7 +67,7 @@ const Dashboard = () => {
 
           <li>
             <NavLink to="/">
-              <FaHome /> Home
+              <FaHome /> HOME
             </NavLink>
           </li>
 
