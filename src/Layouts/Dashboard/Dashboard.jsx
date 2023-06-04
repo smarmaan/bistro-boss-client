@@ -1,5 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaCalendarAlt, FaHome } from "react-icons/fa";
+import {
+  FaShoppingCart,
+  FaCalendarAlt,
+  FaHome,
+  FaUtensils,
+} from "react-icons/fa";
 import { GiWallet } from "react-icons/gi";
 // import { BsFillChatTextFill, BsFillCalendarHeartFill } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
@@ -7,6 +12,10 @@ import UseCart from "../../Hooks/UseCart";
 
 const Dashboard = () => {
   const [cart] = UseCart();
+
+  //TODO:  load data from the server to have dynamic isAdmin based on Data
+
+  const isAdmin = true;
 
   return (
     <div className="drawer  lg:drawer-open drawer-mobile">
@@ -25,33 +34,69 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu gap-2 p-4 w-80 h-full bg-[#D1A054] ">
+        <ul className="menu gap-2 p-4 w-80 bg-[#D1A054] ">
           {/* Sidebar content here */}
 
-          <li>
-            <NavLink to="/dashboard/home">
-              <FaHome /> User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/reservations">
-              <FaCalendarAlt /> Reservations
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/history">
-              <GiWallet /> Payment history
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/home">
+                  <FaHome />
+                  Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservations">
+                  <FaUtensils /> Add Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/history">
+                  <GiWallet /> Manage Items
+                </NavLink>
+              </li>
 
-          <li>
-            <NavLink to="/dashboard/my-cart">
-              <button className="flex gap-2 items-center">
-                <FaShoppingCart />{" "}My Cart
-                <div className="badge badge-error">{cart?.length || 0}</div>
-              </button>
-            </NavLink>
-          </li>
+              <li>
+                <NavLink to="/dashboard/bookings">
+                  <GiWallet /> Manage Bookings
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/all-users">
+                  <GiWallet /> All Users
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/dashboard/home">
+                  <FaHome /> User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservations">
+                  <FaCalendarAlt /> Reservations
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/history">
+                  <GiWallet /> Payment history
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/my-cart">
+                  <button className="flex gap-2 items-center">
+                    <FaShoppingCart /> My Cart
+                    <div className="badge badge-error">{cart?.length || 0}</div>
+                  </button>
+                </NavLink>
+              </li>
+            </>
+          )}
+
           {/* <li>
             <NavLink to=" ">
               <BsFillChatTextFill /> add review
