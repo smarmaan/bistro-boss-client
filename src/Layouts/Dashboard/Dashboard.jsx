@@ -9,13 +9,16 @@ import { GiWallet } from "react-icons/gi";
 // import { BsFillChatTextFill, BsFillCalendarHeartFill } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
 import UseCart from "../../Hooks/UseCart";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = UseCart();
 
   //TODO:  load data from the server to have dynamic isAdmin based on Data
 
-  const isAdmin = true;
+  // const isAdmin = true;
+
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer  lg:drawer-open drawer-mobile">

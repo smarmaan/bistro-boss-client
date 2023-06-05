@@ -71,18 +71,25 @@ const Login = () => {
         <title>Bistro Boss | Login</title>
       </Helmet>
 
-      <div className="hero min-h-screen bg-red-200 gap-10">
+      <div className="hero min-h-screen bg-[url('https://t4.ftcdn.net/jpg/05/51/93/35/360_F_551933523_nBWNQeC6vA8sDE6DDDQeo3YmSRQnlOjN.jpg')] gap-10  bg-cover">
         <div className="hero-content flex-col md:flex-row-reverse">
-          <div className="text-center md:w-1/2  lg:text-left shadow-xl drop-shadow-xl p-10 rounded-2xl bg-green-100">
+          <div className="text-center md:w-1/2  lg:text-left shadow-xl drop-shadow-xl p-10 rounded-2xl text-white">
             <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
+
+            <Link to="/">
+              {" "}
+              <button className="btn glass text-white font-bold text-xl">
+                Home
+              </button>{" "}
+            </Link>
           </div>
 
-          <div className="card   bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg?w=996&t=st=1685731093~exp=1685731693~hmac=87761a276a35f19c8d1dcfea9259596a0a277667448e84f254f0b3ec24385288')]    drop-shadow-2xl  md:w-1/2 max-w-sm shadow-2xl bg-green-100">
+          <div className="card   bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg?w=996&t=st=1685731093~exp=1685731693~hmac=87761a276a35f19c8d1dcfea9259596a0a277667448e84f254f0b3ec24385288')]    drop-shadow-2xl  md:w-1/2 max-w-sm shadow-2xl ">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
