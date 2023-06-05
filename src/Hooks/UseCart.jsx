@@ -11,7 +11,7 @@ const UseCart = () => {
     queryKey: ["carts", user?.email],
     enabled: !loading && !!user?.email,
 
-    //! user email is required to load data
+    //! user email is required to load data otherwise it won't redirect to login page.. will only show loading button
 
     queryFn: async () => {
       const res = await axiosSecure(`/carts?email=${user?.email}`);
