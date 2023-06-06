@@ -62,7 +62,7 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="text-center">
       <Helmet>
         <title>Bistro Boss | All Users </title>
       </Helmet>

@@ -23,10 +23,8 @@ const Dashboard = () => {
   return (
     <div className="drawer  lg:drawer-open drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content">
         {/* Page content here */}
-
-        <Outlet></Outlet>
 
         <label
           htmlFor="my-drawer-2"
@@ -34,6 +32,10 @@ const Dashboard = () => {
         >
           Open drawer
         </label>
+
+        <div className="flex justify-center ">
+          <Outlet></Outlet>
+        </div>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -54,7 +56,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/manage-items">
                   <GiWallet /> Manage Items
                 </NavLink>
               </li>
@@ -68,6 +70,15 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/all-users">
                   <GiWallet /> All Users
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/my-cart">
+                  <button className="flex gap-2 items-center">
+                    <FaShoppingCart /> My Cart
+                    <div className="badge badge-error">{cart?.length || 0}</div>
+                  </button>
                 </NavLink>
               </li>
             </>
