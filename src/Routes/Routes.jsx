@@ -13,6 +13,7 @@ import AllUsers from "../Pages/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashboard/AddItem";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../Pages/Dashboard/ManageItems";
+import AdminHome from "../Pages/Dashboard/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "home",
+        element: (
+          <AdminRoute>
+            <AdminHome />
           </AdminRoute>
         ),
       },
