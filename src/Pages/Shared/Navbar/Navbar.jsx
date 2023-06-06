@@ -44,7 +44,7 @@ const Navbar = () => {
         <li>
           <Link to="/dashboard/admin-home">
             <button className="flex gap-2  items-center">
-              <FaHome className="text-2xl mx-5" />{" "}
+              <FaHome className="text-2xl mx-2" />{" "}
             </button>
           </Link>
         </li>
@@ -63,13 +63,13 @@ const Navbar = () => {
         <>
           <figure>
             <img
-              className="avatar w-10 rounded-full"
+              className="avatar w-10 rounded-full mx-2"
               src={user?.photoURL}
               title={user?.displayName}
               alt=""
             />
           </figure>
-          <button onClick={handleLogout} className="btn btn-ghost ">
+          <button onClick={handleLogout} className="btn btn-ghost mx-2">
             Logout
           </button>
         </>

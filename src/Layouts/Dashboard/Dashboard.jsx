@@ -73,14 +73,14 @@ const Dashboard = () => {
                 </NavLink>
               </li>
 
-              {/* <li>
+              <li>
                 <NavLink to="/dashboard/my-cart">
                   <button className="flex gap-2 items-center">
                     <FaShoppingCart /> My Cart
                     <div className="badge badge-error">{cart?.length || 0}</div>
                   </button>
                 </NavLink>
-              </li> */}
+              </li>
             </>
           ) : (
             <>
