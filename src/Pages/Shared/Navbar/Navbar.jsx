@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaHome, FaShoppingCart } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import UseCart from "../../../Hooks/UseCart";
 import { useContext } from "react";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, LogOut } = useContext(AuthContext);
@@ -10,6 +12,8 @@ const Navbar = () => {
   const [cart] = UseCart();
 
   // console.log(cart);
+
+  const [isAdmin] = useAdmin();
   const handleLogout = () => {
     LogOut()
       .then(() => {})
@@ -29,18 +33,31 @@ const Navbar = () => {
       <li>
         <Link to="/order/Salad">ORDER FOOD</Link>
       </li>
-      <li>
-        <Link to="secret">Secret</Link>
-      </li>
-
-      <li>
-        <Link to="/dashboard/my-cart">
-          <button className="flex gap-2  items-center">
-            <FaShoppingCart />{" "}
-            <div className="badge badge-error">{cart?.length || 0}</div>
-          </button>
-        </Link>
-      </li>
+      {isAdmin || (
+        <li>
+          <Link to="secret">
+            Dashboard<MdDashboard></MdDashboard>{" "}
+          </Link>
+        </li>
+      )}
+      {isAdmin ? (
+        <li>
+          <Link to="/dashboard/admin-home">
+            <button className="flex gap-2  items-center">
+              <FaHome className="text-2xl mx-5" />{" "}
+            </button>
+          </Link>
+        </li>
+      ) : (
+        <li>
+          <Link to="/dashboard/my-cart">
+            <button className="flex gap-2  items-center">
+              <FaShoppingCart />{" "}
+              <div className="badge badge-error">{cart?.length || 0}</div>
+            </button>
+          </Link>
+        </li>
+      )}
 
       {user ? (
         <>
