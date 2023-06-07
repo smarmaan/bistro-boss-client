@@ -3,11 +3,15 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import "./CheckoutForm.css";
+import Swal from "sweetalert2";
+import UseCart from "../../../Hooks/UseCart";
 
 const CheckoutForm = ({ cart, price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
+  const [, refetch] = UseCart();
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -73,7 +77,32 @@ const CheckoutForm = ({ cart, price }) => {
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
 
-      console.log(transactionId);
+      const payment = {
+        email: user?.email,
+        transactionId: paymentIntent.id,
+        price,
+        date: new Date(),
+        quantity: cart.length,
+        cartItems: cart.map((item) => item._id),
+        menuItems: cart.map((item) => item.menuItemId),
+        status: "service pending",
+        itemsNames: cart.map((item) => item.name),
+      };
+
+      axiosSecure.post("/payments", payment).then((res) => {
+        console.log(res.data);
+
+        if (res.data.insertResult.insertedId) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Transaction Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
     }
   };
 
@@ -108,11 +137,13 @@ const CheckoutForm = ({ cart, price }) => {
       </form>
 
       {cardError && (
-        <p className="text-red-600 text-center mt-5">{cardError}</p>
+        <p className="text-red-600 bg-white rounded-full text-center py-3">
+          {cardError}
+        </p>
       )}
 
       {transactionId && (
-        <p className="text-green-500 text-center mt-5">
+        <p className="text-green-500 bg-white rounded-full text-center py-3">
           Transaction complete with transactionId:{" "}
           <span className="text-red-600"> &rdquo;{transactionId}&rdquo;</span>
         </p>
