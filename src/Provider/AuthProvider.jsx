@@ -53,7 +53,9 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", { email: currentUser.email })
+          .post("https://bistro-boss-server-sigma-ten.vercel.app/jwt", {
+            email: currentUser.email,
+          })
           .then((data) => {
             localStorage.setItem("access-token", data.data.token);
             setUser(currentUser);

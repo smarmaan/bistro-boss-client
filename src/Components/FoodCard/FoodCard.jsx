@@ -27,7 +27,7 @@ const FoodCard = ({ item }) => {
         email: user.email,
       };
 
-      fetch("http://localhost:5000/carts", {
+      fetch("https://bistro-boss-server-sigma-ten.vercel.app/carts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
