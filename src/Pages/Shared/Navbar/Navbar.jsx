@@ -51,10 +51,10 @@ const Navbar = () => {
       ) : (
         <li>
           <Link to="/dashboard/my-cart">
-            <button className="flex gap-2  items-center">
+            <p className="flex gap-2  items-center">
               <FaShoppingCart />{" "}
               <div className="badge badge-error">{cart?.length || 0}</div>
-            </button>
+            </p>
           </Link>
         </li>
       )}
