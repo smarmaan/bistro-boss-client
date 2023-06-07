@@ -16,6 +16,7 @@ import ManageItems from "../Pages/Dashboard/ManageItems";
 import AdminHome from "../Pages/Dashboard/AdminHome";
 import UserHome from "../Pages/UserHome/UserHome";
 import ManageBookings from "../Pages/Dashboard/ManageBookings";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "user-home",
         element: <UserHome />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
       {
         path: "all-users",
