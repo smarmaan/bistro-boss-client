@@ -35,7 +35,7 @@ const Navbar = () => {
       </li>
       {isAdmin || (
         <li>
-          <Link to="secret">
+          <Link to="/dashboard/user-home">
             Dashboard<MdDashboard></MdDashboard>{" "}
           </Link>
         </li>
@@ -51,10 +51,10 @@ const Navbar = () => {
       ) : (
         <li>
           <Link to="/dashboard/my-cart">
-            <p className="flex gap-2  items-center">
+            <button className="flex gap-2  items-center">
               <FaShoppingCart />{" "}
               <div className="badge badge-error">{cart?.length || 0}</div>
-            </p>
+            </button>
           </Link>
         </li>
       )}

@@ -75,10 +75,10 @@ const Dashboard = () => {
 
               <li>
                 <NavLink to="/dashboard/my-cart">
-                  <p className="flex gap-2 items-center">
+                  <button className="flex gap-2 items-center">
                     <FaShoppingCart /> My Cart
                     <div className="badge badge-error">{cart?.length || 0}</div>
-                  </p>
+                  </button>
                 </NavLink>
               </li>
             </>
@@ -102,10 +102,10 @@ const Dashboard = () => {
 
               <li>
                 <NavLink to="/dashboard/my-cart">
-                  <p className="flex gap-2 items-center">
+                  <button className="flex gap-2 items-center">
                     <FaShoppingCart /> My Cart
                     <div className="badge badge-error">{cart?.length || 0}</div>
-                  </p>
+                  </button>
                 </NavLink>
               </li>
             </>
